@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel=stylesheet href="style.css">
+    <title>Books</title>
+    <style>
+      
+    </style>
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+          <button id="addbutton" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#inputCollapse" aria-expanded="false" aria-controls="inputCollapse">
+            Add New Book <img alt="addlogo" src="images/icon-add.svg" class="d-inline" id="addicon" />
+          </button>
+            <!-- <div id="addbutton" onclick="location.href='#inputCollapse';">
+              <h4 class="d-inline">Add New Book</h4>
+              <img alt="addlogo" src="images/icon-add.svg" class="d-inline" id="addicon" />
+            </div> -->
+            <div class="collapse" id="inputCollapse">
+              <form id="inputform">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages"># of Pages:</label>
+                <input type="number" id="pages" name="pages">
+                <div id="readyetbox">
+                  <label for="read" id="readtext">Read Yet?:</label>
+                  <input type="checkbox" id="read" name="read">
+                </div>
+                <input type="submit" id="submit" name="submit" value="Add">
+              </form>
+            </div>
+        </div>
+        <div class="row" id="shelfFrame">
+
+        </div>
+    </div>
+
+
+
+    <!-- <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title" id="cardtitle">Book title</h5>
+          <p class="card-text">Name of Author. Number of Pages.</p>
+          <p>Mark as Read</p>
+          <a href="#" class="btn btn-primary">Delete Book From Library</a>
+        </div>
+      </div> -->
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+  
+  
+  <script>
+
+      let myLibrary = [];
+
+      const Book = {
+          title: "",
+          author: "",
+          pages: "",
+          read: false,
+      };
+
+      function addBookToLibrary(title, author, pages, read) {
+          let newBook = Object.create(Book);
+          newBook.title = title;
+          newBook.author = author;
+          newBook.pages = pages;
+          newBook.read = read;
+          myLibrary.push(newBook);
+      };
+
+      addBookToLibrary("The Big Book of Nothing", "Mr Writesalot", "1250", true);
+      addBookToLibrary("War & Peace", "Tolstoy", "1110", false);
+      addBookToLibrary("Book3", "An Author", "15", false);
+
+      console.table(myLibrary);
+    
+      const shelfFrame = document.getElementById('shelfFrame');
+    
+      function drawShelf() {
+        
+      }
+
+      // function drawShelf() {
+      //     // how do we loop this mofo?
+      //   const docFrag = document.createDocumentFragment();
+      //   let bookShelf = document.createElement('div');
+      //       bookShelf.id = 'bookshelf';
+      //   let bookCard = document.createElement('div');
+      //       bookCard.className = 'card';
+      //   let cardTitle = document
+            
+      // }
+    
+    
+    
+    
+    
+    
+    
+    // function book(title, author, pages, read) {
+    //     this.title = title
+    //     this.author = author
+    //     this.pages = pages
+    //     this.read = read
+    //     this.info = function() {
+    //         return title + ' by ' + author + ', ' + pages + ' pages, ' + read
+    //     }
+    // }
+
+    // const nothingBook = new book("The Big Book of Nothing", "Mr Writesalot", "1250", "not read yet");
+    // const warBook = new book
+
+    // console.log(nothingBook.info())
+    
+  </script>
+
+</html>

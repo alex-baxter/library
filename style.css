@@ -1,0 +1,51 @@
+#addbutton{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10% 0px 5% 0px;
+}
+
+#addbutton:hover {
+    cursor: pointer;
+    background-color: rgb(229, 255, 227);
+}
+
+h4 {
+    margin: 8px 8px 8px 8px;
+}
+
+#addicon {
+    width: 15px;
+    height: 15px;
+    margin: 8px;
+}
+
+#inputform {
+    display: grid;
+    max-width: 800px;
+    margin: 0px auto 0px auto;
+}
+
+#readyetbox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 12px 0px 12px 0px;
+}
+
+label {
+    margin-top: 8px;
+}
+
+#readtext {
+    margin-top: 0px;
+    margin-right: 10px;
+}
+
+#submit {
+    width: 200px;
+    margin: 0px auto 0px auto;
+}
