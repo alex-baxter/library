@@ -39,20 +39,12 @@
             </div>
         </div>
         <div class="row" id="shelfFrame">
-
         </div>
     </div>
 
 
 
-    <!-- <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="cardtitle">Book title</h5>
-          <p class="card-text">Name of Author. Number of Pages.</p>
-          <p>Mark as Read</p>
-          <a href="#" class="btn btn-primary">Delete Book From Library</a>
-        </div>
-      </div> -->
+
     
 
 
@@ -89,22 +81,50 @@
       const shelfFrame = document.getElementById('shelfFrame');
     
       function drawShelf() {
+        let bookShelf = document.createElement('div');
+            bookShelf.id = 'bookshelf';
+
+        function drawCard(item, index) {
+          let book = myLibrary[index];
+
+          let bookCard = document.createElement('div');
+              bookCard.className = 'card';
+          let cardBody = document.createElement('div');
+              cardBody.className = 'card-body';    
+          let cardTitle = document.createElement('h5');
+              cardTitle.className = 'card-title';
+              cardTitle.textContent = book.title;
+          let cardAuthor = document.createElement('p');
+              cardAuthor.className = 'card-text';
+              cardAuthor.textContent = book.author;
+          let cardPages = document.createElement('p');
+              cardPages.className = 'card-text';
+              cardPages.textContent = book.pages + ' Pages';
+          let cardRead = document.createElement('p');
+              cardRead.className = 'card-text';
+              cardRead.textContent = 'Read: ' + book.read;
+          let deleteCard = document.createElement('a');
+              deleteCard.href = '#';
+              deleteCard.classList.add('btn', 'btn-primary');
+              deleteCard.textContent = 'Delete Book';
+
+          bookShelf.appendChild(bookCard);
+          bookCard.appendChild(cardBody);
+          cardBody.appendChild(cardTitle);
+          cardBody.appendChild(cardAuthor);
+          cardBody.appendChild(cardPages);
+          cardBody.appendChild(cardRead);
+          cardBody.appendChild(deleteCard);
+        };
+
+
+        myLibrary.forEach(drawCard);
         
+
+        document.querySelector('#shelfFrame').appendChild(bookShelf);
       }
 
-      // function drawShelf() {
-      //     // how do we loop this mofo?
-      //   const docFrag = document.createDocumentFragment();
-      //   let bookShelf = document.createElement('div');
-      //       bookShelf.id = 'bookshelf';
-      //   let bookCard = document.createElement('div');
-      //       bookCard.className = 'card';
-      //   let cardTitle = document
-            
-      // }
-    
-    
-    
+
     
     
     

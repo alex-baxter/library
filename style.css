@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10% 0px 5% 0px;
+    margin: 5% 0px 2% 0px;
 }
 
 #addbutton:hover {
@@ -48,4 +48,15 @@ label {
 #submit {
     width: 200px;
     margin: 0px auto 0px auto;
+}
+
+#bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
+    margin: 2rem 2rem 2rem 2rem;
 }
