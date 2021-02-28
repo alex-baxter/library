@@ -25,16 +25,16 @@
             <div class="collapse" id="inputCollapse">
               <form id="inputform">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" autofocus required>
                 <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" required>
                 <label for="pages"># of Pages:</label>
-                <input type="number" id="pages" name="pages">
+                <input type="number" id="pages" name="pages" required>
                 <div id="readyetbox">
-                  <label for="read" id="readtext">Read Yet?:</label>
+                  <label for="read" id="read">Read Yet?:</label>
                   <input type="checkbox" id="read" name="read">
                 </div>
-                <input type="submit" id="submit" name="submit" value="Add">
+                <input type="button" id="add" name="add" value="Add" onClick="formInput(this.form)">
               </form>
             </div>
         </div>
@@ -42,18 +42,11 @@
         </div>
     </div>
 
-
-
-
-    
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
   
   
   <script>
-
       let myLibrary = [];
 
       const Book = {
@@ -72,6 +65,16 @@
           myLibrary.push(newBook);
       };
 
+      function formInput(inputform) {
+        let title = inputform.title.value;
+        let author = inputform.author.value;
+        let pages = inputform.pages.value;
+        let read = inputform.read.checked;
+        addBookToLibrary(title, author, pages, read);
+        drawShelf();
+        inputform.reset();
+      }
+
       addBookToLibrary("The Big Book of Nothing", "Mr Writesalot", "1250", true);
       addBookToLibrary("War & Peace", "Tolstoy", "1110", false);
       addBookToLibrary("Book3", "An Author", "15", false);
@@ -81,6 +84,8 @@
       const shelfFrame = document.getElementById('shelfFrame');
     
       function drawShelf() {
+        shelfFrame.innerHTML = ' ';
+        
         let bookShelf = document.createElement('div');
             bookShelf.id = 'bookshelf';
 
@@ -105,7 +110,8 @@
               cardRead.textContent = 'Read: ' + book.read;
           let deleteCard = document.createElement('a');
               deleteCard.href = '#';
-              deleteCard.classList.add('btn', 'btn-primary');
+              deleteCard.classList.add('btn', 'btn-primary', 'carddelbutton');
+              deleteCard.setAttribute('index', index);
               deleteCard.textContent = 'Delete Book';
 
           bookShelf.appendChild(bookCard);
@@ -117,32 +123,27 @@
           cardBody.appendChild(deleteCard);
         };
 
-
         myLibrary.forEach(drawCard);
-        
 
         document.querySelector('#shelfFrame').appendChild(bookShelf);
-      }
 
+        shelfFrame.addEventListener('click', function(e) {
+          if(e.target.className === 'btn btn-primary carddelbutton') {
+          let indexNum = e.target.getAttribute('index');
+          console.log(indexNum);
+          deleteBook(indexNum);
+          }
+        });
 
-    
-    
-    
-    
-    // function book(title, author, pages, read) {
-    //     this.title = title
-    //     this.author = author
-    //     this.pages = pages
-    //     this.read = read
-    //     this.info = function() {
-    //         return title + ' by ' + author + ', ' + pages + ' pages, ' + read
-    //     }
-    // }
+    };
 
-    // const nothingBook = new book("The Big Book of Nothing", "Mr Writesalot", "1250", "not read yet");
-    // const warBook = new book
+    drawShelf();
 
-    // console.log(nothingBook.info())
+    function deleteBook(indexNum) {
+        myLibrary.splice(indexNum, 1);
+        drawShelf();
+    };
+    
     
   </script>
 
